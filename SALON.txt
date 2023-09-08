@@ -1,0 +1,346 @@
+LOGIN:
+String ur=tf1.getText();
+String pw=new String(p1.getPassword());
+try
+{Class.forName("java.sql.DriverManager");
+Connection c=DriverManager.getConnection("jdbc:mysql://localhost:3306/beauty_salon","root","admin");
+Statement s=c.createStatement();
+String q="select username from login where username='"+ur+"' && password='"+pw+"';";
+ResultSet rs= s.executeQuery(q);
+if(rs.next())
+{
+JOptionPane.showMessageDialog(null,"lOGIN SUCCESSFUL");
+new HOME_PAGE().setVisible(true);
+this.dispose();
+}
+else
+{
+    JOptionPane.showMessageDialog(null,"lOGIN FAILD");
+}
+tf1.setEnabled(false);
+}
+catch(Exception e)
+ {JOptionPane.showMessageDialog(null,e.getMessage());
+ }
+
+CREATE NEW ACCOUNT:
+new CREATE_ACCOUNT().setVisible(true);
+this.dispose();
+
+CLEAR:
+tf1.setText("");
+  p1.setText("");
+
+CREATE:
+String ur=tf1.getText();
+String pw=new String(p1.getPassword());
+try
+{Class.forName("java.sql.DriverManager");
+Connection c=DriverManager.getConnection("jdbc:mysql://localhost:3306/beauty_salon","root","admin");
+Statement s=c.createStatement();
+String q="insert into login values('"+ur+"','"+pw+"');";
+s.executeUpdate(q);
+JOptionPane.showMessageDialog(null,"ACCOUNT CREATED SUCCESSFULLY");
+new LOGIN().setVisible(true);
+this.dispose();
+}
+catch(Exception e)
+ {JOptionPane.showMessageDialog(null,e.getMessage());
+ }
+
+BACK:
+new LOGIN().setVisible(true);
+this.dispose();
+
+MEHANDI:
+new MEHANDI().setVisible(true);
+this.dispose();
+
+HAIRCUT:
+new HAIRCUT().setVisible(true);
+this.dispose();
+
+FACIAL:
+ new FACIAL().setVisible(true);
+this.dispose(); 
+
+BRIDAL_MAKEUP:
+new BRIDAL_MAKEUP().setVisible(true);
+this.dispose();  
+
+CUSTOMER:
+new CUSTOMER().setVisible(true);
+this.dispose();
+
+ADDCUST:
+new ADDCUST().setVisible(true);
+this.dispose();
+
+BEAUTICIAN:
+new BEAUTICIAN().setVisible(true);
+this.dispose();  
+
+ADDBEAUTICIAN:     
+new ADDBEAUTY().setVisible(true);
+this.dispose();  
+
+BILL AMOUNT:
+new FINAL().setVisible(true);
+this.dispose();
+   
+EXIT
+new LOGIN().setVisible(true);
+this.dispose();  
+
+CLICK TO VIEW AMOUNT:
+public static double a;
+a=0;
+if(c1.isSelected())
+{a=a+300;}
+if(c2.isSelected())
+{a=a+250;}
+if(c3.isSelected())
+{a=a+500;}
+if(c4.isSelected())
+{a=a+350;}
+if(c5.isSelected())
+{a=a+400;}
+if(c6.isSelected())
+{a=a+600;}
+tf1.setText(""+a);
+
+HOME:
+new HOME_PAGE().setVisible(true);
+this.dispose();
+
+NEXT:
+new HAIRCUT().setVisible(true);
+this.dispose();
+
+CLICK TO VIEW AMOUNT HAIRCUT
+public static double b;
+        b=0;
+        if(c1.isSelected())
+        {b=b+300;}
+        if(c2.isSelected())
+        {b=b+250;}
+        if(c3.isSelected())
+        {b=b+500;}
+        if(c4.isSelected())
+        {b=b+350;}
+        if(c5.isSelected())
+        {b=b+400;}
+        if(c6.isSelected())
+        {b=b+600;}
+        tf2.setText(""+b);
+HOME
+new HOME_PAGE().setVisible(true);
+        this.dispose();
+
+NEXT
+new FACIAL().setVisible(true);
+        this.dispose();
+
+CLICK TO VIEW AMOUNT FACIAL
+public static double c;
+        c=0;
+        if(c1.isSelected())
+        {c=c+300;}
+        if(c2.isSelected())
+        {c=c+250;}
+        if(c3.isSelected())
+        {c=c+500;}
+        if(c4.isSelected())
+        {c=c+350;}
+        if(c5.isSelected())
+        {c=c+400;}
+        if(c6.isSelected())
+        {c=c+600;}
+        tf3.setText(""+c);
+
+HOME
+new HOME_PAGE().setVisible(true);
+        this.dispose();
+
+NEXT
+new BRIDAL_MAKEUP().setVisible(true);
+        this.dispose();
+
+CLICK TO VIEW AMOUNT BRIDAL_MAKEUP
+public static double d;
+        d=0;
+        if(c1.isSelected())
+        {d=d+300;}
+        if(c2.isSelected())
+        {d=d+250;}
+        if(c3.isSelected())
+        {d=d+500;}
+        if(c4.isSelected())
+        {d=d+350;}
+        if(c5.isSelected())
+        {d=d+400;}
+        if(c6.isSelected())
+        {d=d+600;}
+        tf4.setText(""+d);
+HOME
+new HOME_PAGE().setVisible(true);
+        this.dispose();
+
+NEXT
+new CUSTOMER().setVisible(true);
+        this.dispose();
+
+CUSTOMER:
+DefaultTableModel m=(DefaultTableModel)jt1.getModel();
+try
+{Class.forName("java.sql.DriverManager");
+Connection c=DriverManager.getConnection("jdbc:mysql://localhost:3306/beauty_salon","root","admin");
+Statement s=c.createStatement();
+String q="select *  from cust;";
+ResultSet rs=s.executeQuery(q);
+while(rs.next())
+{
+    String  customer_id=rs.getString("customer_id"); 
+       String  customer_name=rs.getString("customer_name");
+       int  age=rs.getInt("age");
+         String address=rs.getString("address");
+       String  phone_no=rs.getString("phone_no"); 
+        m.addRow(new Object[]{customer_id,customer_name,age,address,phone_no});
+}   
+}
+catch(Exception e)
+{JOptionPane.showMessageDialog(null,e.getMessage());}   
+    
+HOME
+    new HOME_PAGE().setVisible(true);
+this.dispose();
+
+
+CREAT CUSTOMER:
+String ci=tf1.getText();
+String cn=tf2.getText();
+int age=Integer.parseInt(tf3.getText());
+String b=tf4.getText();
+String  p=tf5.getText();      
+
+try
+{Class.forName("java.sql.DriverManager");
+Connection c=DriverManager.getConnection("jdbc:mysql://localhost:3306/beauty_salon","root","admin");
+Statement s=c.createStatement();
+String q="insert into cust values('"+ci+"','"+cn+"','"+age+"','"+b+"','"+p+"');";
+s.executeUpdate(q);
+JOptionPane.showMessageDialog(null,"RECORD SAVED");
+}
+
+catch(Exception e)
+ {JOptionPane.showMessageDialog(null,e.getMessage());
+ }
+
+HOME
+    new HOME_PAGE().setVisible(true);
+this.dispose();
+
+ADDCUSTMORE:
+String ci=tf1.getText();
+String cn=tf2.getText();
+int age=Integer.parseInt(tf3.getText());
+String b=tf4.getText();
+String  p=tf5.getText();      
+
+try
+{Class.forName("java.sql.DriverManager");
+Connection c=DriverManager.getConnection("jdbc:mysql://localhost:3306/beauty_salon","root","admin");
+Statement s=c.createStatement();
+String q="insert into cust values('"+ci+"','"+cn+"','"+age+"','"+b+"','"+p+"');";
+s.executeUpdate(q);
+JOptionPane.showMessageDialog(null,"RECORD SAVED");
+}
+
+catch(Exception e)
+ {JOptionPane.showMessageDialog(null,e.getMessage());
+ }
+
+
+HOME
+    new HOME_PAGE().setVisible(true);
+this.dispose();
+
+CLEAR:
+tf1.setText("");
+tf2.setText("");
+tf3.setText("");
+tf4.setText("");
+tf5.setText("");
+
+
+
+BEAUTICIAN:
+ DefaultTableModel m=(DefaultTableModel)jt1.getModel();
+        try
+        {Class.forName("java.sql.DriverManager");
+            Connection c=DriverManager.getConnection("jdbc:mysql://localhost:3306/beauty_salon","root","admin");
+            Statement s=c.createStatement();
+            String q="select *  from beauty;";
+            ResultSet rs=s.executeQuery(q);
+            while(rs.next())
+            {
+                String  beautician_id=rs.getString("beautician_id");
+                String  beautician_name=rs.getString("beautician_name");
+                String  age=rs.getString("beautician_age");
+                String address=rs.getString("beautician_address");
+                String  phone_no=rs.getString("phoneno");
+                m.addRow(new Object[]{beautician_id,beautician_name,age,address,phone_no});
+            }
+        }
+        catch(Exception e)
+        {JOptionPane.showMessageDialog(null,e.getMessage());}
+HOME
+    new HOME_PAGE().setVisible(true);
+this.dispose();
+
+ADDBEAUTICIAN:
+
+pivate void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {                                         
+        String bi=tf1.getText();
+        String bn=tf2.getText();
+        int age=Integer.parseInt(tf3.getText());
+        String b=tf4.getText();
+        String pn=tf5.getText();
+
+        try
+        {Class.forName("java.sql.DriverManager");
+            Connection c=DriverManager.getConnection("jdbc:mysql://localhost:3306/beauty_salon","root","admin");
+            Statement s=c.createStatement();
+            String q="insert into beauty values('"+bi+"','"+bn+"','"+age+"','"+b+"','"+pn+"');";
+            s.executeUpdate(q);
+            JOptionPane.showMessageDialog(null,"RECORD SAVED");
+        }
+
+        catch(Exception e)
+        {JOptionPane.showMessageDialog(null,e.getMessage());
+        }
+HOME
+    new HOME_PAGE().setVisible(true);
+this.dispose();
+
+CLEAR:
+tf1.setText("");
+tf2.setText("");
+tf3.setText("");
+tf4.setText("");
+tf5.setText("");
+
+FINAL:
+
+
+double e=0;
+e=MEHANDI.a+HAIRCUT.b+FACIAL.c+BRIDAL_MAKEUP.d;
+tf1.setText(""+"RS."+e);
+
+IMPORT 
+import java.sql.ResultSet;
+import java.sql.Connection;
+import java.sql.DriverManager;
+import java.sql.Statement;
+import javax.swing.JOptionPane;
+import javax.swing.table.DefaultTableModel;
